@@ -13,9 +13,7 @@
 "RÜSTUNG",
 "ANGREIFER",
 "VERTEIDIGER",
-
-
-//Helden
+// Helden
 "D.VA",
 "ORISA",
 "REINHARDT",
@@ -42,11 +40,10 @@
 "WIDOWMAKER",
 "ANA",
 "BRIGITTE",
-"LÚCIOCIO",
+"LÚCIO",
 "MERCY",
 "MOIRA",
 "ZENYATTA",
- 
 // Ultimates  
 "SELBSTZERSTÖRUNG",
 "SUPERBOOSTER",
@@ -77,7 +74,6 @@
 "VALKYRIE",
 "KOALESZENZ",
 "TRANSZENDENZ",
-  
 // Maps
 //ANGRIFF
 "HANAMURA",
