@@ -7,7 +7,7 @@ exports.initGame = function(sio,socket,wordList){
 	io = sio;
 	gameSocket = socket;
     words=wordList;
-	gameSocket.emit('connected', { message: "You are connected!" });
+	gameSocket.emit('connected', { message: "Du bist verbunden!" });
     // Host Events
     gameSocket.on('hostCreateNewGame', hostCreateNewGame);
     gameSocket.on('playerJoinGame',playerJoinGame);
@@ -63,7 +63,7 @@ function playerJoinGame(data) {
         io.sockets.in(data.gameID).emit('playerJoinedRoom', data);
 
     } else {
-        this.emit('error',{message: "This room does not exist."} );
+        this.emit('error',{message: "Diese Lobby existiert nicht!"} );
     }
     if (rooms[gameID] == undefined){
         rooms[gameID] = "waiting";
