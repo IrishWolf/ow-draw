@@ -527,7 +527,7 @@
                     clearInterval(ticker);
                 }
                 var timeInSecs = parseInt(turnLength);
-                ticker = setInterval(function(){ tick(); }, 1000);
+                ticker = setInterval(function(){ tick(); }, 6000);
                 function tick() {
                     var secs = timeInSecs;
                     if (secs>=0) {
