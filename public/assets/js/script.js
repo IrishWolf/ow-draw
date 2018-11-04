@@ -183,7 +183,7 @@
         displayNewGameScreen : function(data){
             App.gameState = 'lobby';
             $('#main_area').html((data.playing)?App.$in_progress_lobby:App.$lobby);
-            $('#instructions').html("<h1>Game ID: "+App.gameID+"</h1><p>Gib deinen Freunden diese ID oder den Link <a href='http://ow-draw.herokuapp.com/g/"+App.gameID+"'>link</a></p><h1>Users</h1>");
+            $('#instructions').html("<h1>Game ID: "+App.gameID+"</h1><p>Gib deinen Freunden die Game ID oder den folgenden <a href='http://ow-draw.herokuapp.com/g/"+App.gameID+"'>Link.</a></p><h1>Spieler*innen</h1>");
             $('#room_number_header').html('Game ID: '+ App.gameID);
             $("#chat_area").html(App.$chat_template);
             $('#messages').append(chatHistory);
@@ -240,7 +240,7 @@
                 displayHelp.lobby = false;
                 }
             }
-            var userList = "<li class='pure-menu-item'>Users</li>";
+            var userList = "<li class='pure-menu-item'>Spieler*innen</li>";
             var pointsList = "<li class='pure-menu-item'>Score</li>";
             for(var i = 0; i < data.length; i++){
                 userList = userList + "<li id='user"+data[i].mySocketID+"' class='pure-menu-item'>"+data[i].playerName+"</li>";
@@ -367,8 +367,8 @@
                 //console.log(App.word);
                 $("#paper").css("cursor","url('http://ow-draw.herokuapp.com/assets/img/pencil.png') 0 100, pointer");
                 $("#palette_area").html(App.$palette);
-                $("#your_role").html("You are the Drawer");
-                $("#drawer_word").html("The Word is: "+App.word);
+                $("#your_role").html("Du darfst jetzt Malen!");
+                $("#drawer_word").html("Dein Wort lautet: "+App.word);
                 if(displayHelp.drawer == true){
                     startDrawerIntro();
                     displayHelp.drawer = false;
@@ -387,7 +387,7 @@
                         else
                            hint = hint+'_ ';
                 }
-                $("#your_role").html("Du musst raten");
+                $("#your_role").html("Du darfst jetzt mitraten!");
                 $("#drawer_word").html("Hinweis&nbsp;&nbsp&nbsp;"+hint);
                 if(displayHelp.guesser == true){
                     startGuesserIntro();
@@ -452,7 +452,7 @@
         gameEnded: function(data){
             //update points
             preventCursorRace = true;   //tells everyone to stop receiving cursor mousemove signals
-            var userList = "<li class='pure-menu-item'>Users</li>";
+            var userList = "<li class='pure-menu-item'>Spieler*innen</li>";
             var pointsList = "<li class='pure-menu-item'>Score</li>";
             for(var i = 0; i < App.players.length; i++){
                 userList = userList + "<li id='user"+App.players[i].mySocketID+"' class='pure-menu-item'>"+App.players[i].playerName+"</li>";
@@ -490,7 +490,7 @@
             $('#main_area').html(App.$end_round_lobby);
 
             if(App.players[turn].playerName == App.myName){
-                $('#next_drawer').html("You Are ");
+                $('#next_drawer').html("Du bist ");
             }
             else{
                 $('#next_drawer').html(App.players[turn].playerName + " is ");
@@ -506,13 +506,13 @@
             }
             console.log(App.players);
             if(correct_count == App.players.length - 1){
-                $('#correct_count').html("All Players ");
+                $('#correct_count').html("Alle Spieler*innen ");
             }
             else if(correct_count == 1){
-                $('#correct_count').html("1 Player ");
+                $('#correct_count').html("1 Spieler*in ");
             }
             else{
-                $('#correct_count').html(correct_count + " Players ");
+                $('#correct_count').html(correct_count + " Spieler*innen ");
             }
         },
         startTimer: function(turnLength, start){
@@ -672,7 +672,7 @@
             temp_hint[letters_to_reveal[index]] = App.word[letters_to_reveal[index]];
             hint = ConvertHintToString(temp_hint);
             letters_to_reveal.splice(index, 1);
-            $(drawer_word).html("Hint&nbsp;&nbsp&nbsp;" + hint);
+            $(drawer_word).html("Hinweis&nbsp;&nbsp&nbsp;" + hint);
 
             function ConvertHintToArray(hint_string){
                 var hint_copy2 = hint_string;
