@@ -184,7 +184,7 @@
             App.gameState = 'lobby';
             $('#main_area').html((data.playing)?App.$in_progress_lobby:App.$lobby);
             $('#instructions').html("<h1>Lobby-ID: "+App.gameID+"</h1><p>Gib deinen Freunden die Lobby-ID, damit sie dir beitreten können.</p><h1>Spieler*innen</h1>");
-            $('#room_number_header').html('| Lobby-ID: '+ App.gameID);
+            $('#room_number_header').html('| &nbsp; &nbsp; &nbsp; Lobby-ID: '+ App.gameID);
             $("#chat_area").html(App.$chat_template);
             $('#messages').append(chatHistory);
             App.$cont = $('#chat');
@@ -396,7 +396,7 @@
                 //console.log("i am the guesser");
                 //console.log("i dont know the word is"+ App.word);
             }
-            $("#user"+App.players[turn].mySocketID).html(App.players[turn].playerName+' (drawer)');
+            $("#user"+App.players[turn].mySocketID).html(App.players[turn].playerName+' (Zeichner*in)');
             
             //console.log(App.word + "length = " + App.word.length);
             letters_to_reveal = [];
