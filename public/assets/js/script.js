@@ -118,7 +118,7 @@
     var drawThickness = 10;
     var color = '#000';
     var ticker;
-    var turnLength_global = 10; //!!!Change
+    var turnLength_global = 60; //!!!Change
     var end_round_wait_time = 10; //!!!Change
     var currentTimer = 0;
     var firstCorrectAnswer = true;
