@@ -183,8 +183,8 @@
         displayNewGameScreen : function(data){
             App.gameState = 'lobby';
             $('#main_area').html((data.playing)?App.$in_progress_lobby:App.$lobby);
-            $('#instructions').html("<h1>Game ID: "+App.gameID+"</h1><p>Gib deinen Freunden die Game ID oder den folgenden <a href='http://ow-draw.herokuapp.com/g/"+App.gameID+"'>Link.</a></p><h1>Spieler*innen</h1>");
-            $('#room_number_header').html('Game ID: '+ App.gameID);
+            $('#instructions').html("<h1>Lobby-ID: "+App.gameID+"</h1><p>Gib deinen Freunden die Lobby-ID, damit sie dir beitreten können.</p><h1>Spieler*innen</h1>");
+            $('#room_number_header').html('| Lobby-ID: '+ App.gameID);
             $("#chat_area").html(App.$chat_template);
             $('#messages').append(chatHistory);
             App.$cont = $('#chat');
@@ -241,7 +241,7 @@
                 }
             }
             var userList = "<li class='pure-menu-item'>Spieler*innen</li>";
-            var pointsList = "<li class='pure-menu-item'>Score</li>";
+            var pointsList = "<li class='pure-menu-item'>Punkte</li>";
             for(var i = 0; i < data.length; i++){
                 userList = userList + "<li id='user"+data[i].mySocketID+"' class='pure-menu-item'>"+data[i].playerName+"</li>";
                 pointsList = pointsList + "<li id='"+data[i].mySocketID+"score' class='pure-menu-item'>"+data[i].myPoints+"</li>";
@@ -324,7 +324,7 @@
             App.hasAlreadyWon = false;
             App.gameRole = (App.mySocketID==App.players[turn].mySocketID?"drawer":"guesser");
             App.word=data.word;
-            $("#current-word").html((App.gameRole=="drawer")?"Word: "+App.word:"");
+            $("#current-word").html((App.gameRole=="drawer")?"Dein WORT: "+App.word:"");
             App.canvas.on('mousedown',function(e){
                 App.ctx.beginPath();
                 if(App.gameRole == "drawer"){
@@ -453,7 +453,7 @@
             //update points
             preventCursorRace = true;   //tells everyone to stop receiving cursor mousemove signals
             var userList = "<li class='pure-menu-item'>Spieler*innen</li>";
-            var pointsList = "<li class='pure-menu-item'>Score</li>";
+            var pointsList = "<li class='pure-menu-item'>Punkte</li>";
             for(var i = 0; i < App.players.length; i++){
                 userList = userList + "<li id='user"+App.players[i].mySocketID+"' class='pure-menu-item'>"+App.players[i].playerName+"</li>";
                 pointsList = pointsList + "<li id='"+App.players[i].mySocketID+"score' class='pure-menu-item'>"+App.players[i].myPoints+"</li>";
