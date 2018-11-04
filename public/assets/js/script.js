@@ -1,13 +1,7 @@
-// TODO: Create new field to store whether someone has guessed the correct word, cannot use hasAlreadyWon
-// TODO: Change the Timers to deploy 
-// TODO: Change to a new Server
-// TODO: Allow server to handle the random number generator so the revealed letters are equal among all devices
     var IO = {
         init : function(){
             //var url = "http://localhost:5000";
             var url = 'https://ow-draw.herokuapp.com/';
-            //var url = 'https://ancient-fjord-8441.herokuapp.com';
-            //var url = 'https://129.97.134.17:5000;'
             IO.socket = io.connect(url);
             IO.bindEvents();
 
@@ -118,8 +112,8 @@
     var drawThickness = 10;
     var color = '#000';
     var ticker;
-    var turnLength_global = 60; //!!!Change
-    var end_round_wait_time = 10; //!!!Change
+    var turnLength_global = 60;
+    var end_round_wait_time = 5;
     var currentTimer = 0;
     var firstCorrectAnswer = true;
     var turn = 0;
@@ -167,7 +161,7 @@
             $(window).resize(App.recalculateDimensions);
             window.onbeforeunload = function(){
                 if(App.gameState == 'playing')
-                    return 'You are Currently in a game. Are you sure you want to leave?'
+                    return 'Du bist mitten in einem Spiel, willst du wirklich gehen? o__o'
             };
             window.onunload = App.onUserLeave;
         },
@@ -189,7 +183,7 @@
         displayNewGameScreen : function(data){
             App.gameState = 'lobby';
             $('#main_area').html((data.playing)?App.$in_progress_lobby:App.$lobby);
-            $('#instructions').html("<h1>Game ID: "+App.gameID+"</h1><p>Give your friends this ID to join or this <a href='http://draw-prototype.herokuapp.com/g/"+App.gameID+"'>link</a></p><h1>Users</h1>");
+            $('#instructions').html("<h1>Game ID: "+App.gameID+"</h1><p>Gib deinen Freunden diese ID oder den Link <a href='http://ow-draw.herokuapp.com/g/"+App.gameID+"'>link</a></p><h1>Users</h1>");
             $('#room_number_header').html('Game ID: '+ App.gameID);
             $("#chat_area").html(App.$chat_template);
             $('#messages').append(chatHistory);
@@ -267,7 +261,7 @@
             //console.log(App.word);
             //console.log('App.hasAlreadyWon = '+App.hasAlreadyWon);
             if (App.gameState == "playing" && chat_message.toUpperCase().indexOf(App.word) != -1 && App.gameRole != 'drawer' && !App.hasAlreadyWon){
-                $("#drawer_word").html("You Guessed the Right Word: "+App.word);
+                $("#drawer_word").html("Du hast das richtige Wort erraten: "+App.word);
                 App.hasAlreadyWon = true;
                 data= {name:App.myName, gameID:App.gameID, socketID:App.mySocketID};
                 IO.socket.emit('givePoints',data);
@@ -371,7 +365,7 @@
             if(App.gameRole == "drawer"){
                 //console.log("i am the drawer");
                 //console.log(App.word);
-                $("#paper").css("cursor","url('http://draw-prototype.herokuapp.com/assets/img/pencil.png') 0 100, pointer");
+                $("#paper").css("cursor","url('http://ow-draw.herokuapp.com/assets/img/pencil.png') 0 100, pointer");
                 $("#palette_area").html(App.$palette);
                 $("#your_role").html("You are the Drawer");
                 $("#drawer_word").html("The Word is: "+App.word);
@@ -393,8 +387,8 @@
                         else
                            hint = hint+'_ ';
                 }
-                $("#your_role").html("You are a Guesser");
-                $("#drawer_word").html("Hint&nbsp;&nbsp&nbsp;"+hint);
+                $("#your_role").html("Du musst raten");
+                $("#drawer_word").html("Hinweis&nbsp;&nbsp&nbsp;"+hint);
                 if(displayHelp.guesser == true){
                     startGuesserIntro();
                     displayHelp.guesser = false;
