@@ -124,7 +124,7 @@
         FirstAnswer: 5,
         SubsequentAnswer: 2,
         DrawerPoints: 2,
-        FailDrawDeduction: 5
+        FailDrawDeduction: 0
     };
     var App = {
         gameID:0,
