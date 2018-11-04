@@ -490,10 +490,10 @@
             $('#main_area').html(App.$end_round_lobby);
 
             if(App.players[turn].playerName == App.myName){
-                $('#next_drawer').html("Du bist ");
+                $('#next_drawer').html("Du bist als nächstes dran mit Zeichnen!");
             }
             else{
-                $('#next_drawer').html(App.players[turn].playerName + " is ");
+                $('#next_drawer').html(App.players[turn].playerName + " ist als nächstes dran mit Zeichnen!");
             }
 
             App.startTimer(end_round_wait_time, false);
@@ -506,13 +506,13 @@
             }
             console.log(App.players);
             if(correct_count == App.players.length - 1){
-                $('#correct_count').html("Alle Spieler*innen ");
+                $('#correct_count').html("Alle Spieler*innen konnten das Wort erraten!");
             }
             else if(correct_count == 1){
-                $('#correct_count').html("1 Spieler*in ");
+                $('#correct_count').html("1 Spieler*in konnte das Wort erraten!");
             }
             else{
-                $('#correct_count').html(correct_count + " Spieler*innen ");
+                $('#correct_count').html(correct_count + " Spieler*innen konnten das Wort erraten!");
             }
         },
         startTimer: function(turnLength, start){
