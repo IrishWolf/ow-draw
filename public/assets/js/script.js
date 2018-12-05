@@ -381,7 +381,7 @@
                 for( var i = 0; i < App.word.length; i++){
                     console.log(App.word[i]);
                         if(App.word[i]==' '){
-                            //console.log(true);
+                            console.log(true);
                            hint = hint + '&nbsp;&nbsp;&nbsp;';
                         }
                         else
@@ -534,12 +534,12 @@
                     console.log('cleared?');
                     clearInterval(ticker);
                     App.startTimer(turnLength_global, true);
-                    // stop counting at zero
-                        // startTimer(60);  // remove forward slashes in front of startTimer to repeat if required
+                    //stop counting at zero
+                         startTimer(90);  // remove forward slashes in front of startTimer to repeat if required
                     }
                 }
             }
-        //App.startTimer(turnLength, true);
+        App.startTimer(turnLength, true);
         },
         updateTimer: function(secs){
             console.log(App.gameState);
