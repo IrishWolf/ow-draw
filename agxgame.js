@@ -42,11 +42,11 @@ function hostCreateNewGame(data){
     this.emit('playerJoinedRoom', data);
 }
 function playerJoinGame(data) {
-   //console.log('joined game');
+   console.log('joined game');
     var sock = this;
     var room = gameSocket.adapter.rooms[data.gameID];
     var gameID = data.gameID;
-    //console.log(gameSocket.manager.rooms["/" + data.gameID]);
+    console.log(gameSocket.manager.rooms["/" + data.gameID]);
 
     if( room != undefined ){
 
@@ -87,7 +87,7 @@ function mousemove(data, drawer_window_size){
 }
 function gameEnd(data){
     //{winner_name}
-    //console.log(data);
+    console.log(data);
     rooms[data.gameID]="waiting";
     io.sockets.in(data.gameID).emit('gameEnded',data.name);
 }
