@@ -56,7 +56,7 @@
         },
         saveChatHistory: function(data){
             chatHistory = data;
-            //console.log(chatHistory);
+            console.log(chatHistory);
         },
         startTimer: function(turnLength, start){
             App.startTimer(turnLength, start);
@@ -112,7 +112,7 @@
     var drawThickness = 10;
     var color = '#000';
     var ticker;
-    var turnLength_global = 60;
+    var turnLength_global = 90;
     var end_round_wait_time = 5;
     var currentTimer = 0;
     var firstCorrectAnswer = true;
