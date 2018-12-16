@@ -109,7 +109,7 @@
     var reveal_interval = 0;
     var preventCursorRace = false; //stops a residual cursor after a new game starts
     var displayHelp ={ lobby:false, drawer:false, guesser:false};
-    var drawThickness = 10;
+    var drawThickness = 5;
     var color = '#000';
     var ticker;
     var turnLength_global = 90;
